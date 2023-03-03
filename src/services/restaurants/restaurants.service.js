@@ -2,7 +2,7 @@ import camelize from 'camelize';
 
 export const restaurantsRequest = (location) => {
   return fetch(
-    `https://3eee-2405-201-a806-6068-9883-9093-2351-bff3.ngrok.io/meals-to-go-e0c54/us-central1/placesNearby?location=${location}`
+    `http://6fb5-2405-201-a806-608b-340e-b27f-cff-9cf5.ngrok.io/meals-to-go-e0c54/us-central1/placesNearby?location=${location}`
   ).then((res) => {
     return res.json();
   });
