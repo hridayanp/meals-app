@@ -12,6 +12,8 @@ import { FavouritesContextProvider } from '../../services/favourites/favourites.
 import { CartContextProvider } from '../../services/cart/cart.context';
 import { CheckoutNavigator } from './checkout.navigator';
 
+import { colors } from '../../infrastructure/theme/colors';
+
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
@@ -38,8 +40,8 @@ export const AppNavigator = () => (
           <Tab.Navigator
             screenOptions={createScreenOptions}
             tabBarOptions={{
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
+              activeTintColor: colors.brand.primary,
+              inactiveTintColor: colors.brand.muted,
             }}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />

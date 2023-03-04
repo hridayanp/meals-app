@@ -11,6 +11,8 @@ import { SafeArea } from '../../../components/utility/safe-area.component';
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { colors } from '../../../infrastructure/theme/colors';
+
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -48,10 +50,10 @@ export const SettingsScreen = ({ navigation }) => {
             <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
           )}
           {photo && (
-            <Avatar.Image
+            <Avatar.Icon
               size={180}
-              source={{ uri: photo }}
-              backgroundColor="#2182BD"
+              icon="human"
+              backgroundColor={colors.brand.primary}
             />
           )}
         </TouchableOpacity>
