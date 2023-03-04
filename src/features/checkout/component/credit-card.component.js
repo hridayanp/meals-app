@@ -5,7 +5,7 @@ import { cardTokenRequest } from '../../../services/checkout/checkout.service';
 
 //pk_test_51HiayzCtmz6bjcdsGgXeQnGnu0g7AEQ8H8eYxqFNI8jjF1c8yNAOK0t7h8SsqTneyNwwMtk0ygfEuk6PEKZp6rml0076yfK16P
 
-const CreditCardComponent = ({ name = 'Test' }) => {
+const CreditCardComponent = ({ name, onSuccess }) => {
   const onChange = async (formData) => {
     const { values, status } = formData;
     const isIncomplete = Object.values(status).includes('incomplete');
@@ -18,8 +18,11 @@ const CreditCardComponent = ({ name = 'Test' }) => {
       name: name,
     };
 
-    const info = await cardTokenRequest(card);
-    console.log('info', info);
+    if (!isIncomplete) {
+      const info = await cardTokenRequest(card);
+      console.log('info', info);
+      onSuccess(info);
+    }
   };
   return (
     <SafeArea>

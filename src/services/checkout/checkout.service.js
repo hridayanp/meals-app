@@ -7,3 +7,23 @@ const stripe = createStripe(
 export const cardTokenRequest = (card) => {
   return stripe.createToken({ card });
 };
+
+export const payRequest = async (token, amount, name) => {
+  return fetch(
+    `http://d688-2405-201-a806-60bc-b416-5d0f-ebdf-8c4d.ngrok.io/meals-to-go-e0c54/us-central1/pay`,
+    {
+      body: JSON.stringify({
+        token,
+        name,
+        amount,
+      }),
+      method: 'POST',
+    }
+  ).then((res) => {
+    console.log('res', res);
+    if (res.status > 200) {
+      return Promise.reject('something went wrong processing your payment');
+    }
+    return res.json();
+  });
+};
